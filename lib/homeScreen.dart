@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
-      title: Text("4chan pop"),
+      title: Text("4chan"),
     ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text("data")
+            title: Text("Pop")
           ),
            new BottomNavigationBarItem(
             icon: Icon(Icons.scatter_plot),
