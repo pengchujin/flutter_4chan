@@ -1,19 +1,26 @@
 import 'dart:convert' show json;
 
 class Board {
+  
   String board;
   String title;
-  int wsBoard;
-  int pages;
-  int perPage;
-  double maxFilesize;
-  double maxWebmFilesize;
-  double maxCommentChars;
-  double maxWebmDuration;
-  double bumpLimit;
-  double imageLimit;
+  num wsBoard;
+  num pages;
+  num perPage;
+  num maxFilesize;
+  num maxWebmFilesize;
+  num maxCommentChars;
+  num maxWebmDuration;
+  num bumpLimit;
+  num imageLimit;
+  // double maxFilesize;
+  // double maxWebmFilesize;
+  // double maxCommentChars;
+  // double maxWebmDuration;
+  // double bumpLimit;
+  // double imageLimit;
   String metaDescription;
-  int isArchlived;
+  num isArchlived;
 
   Board.fromJson(jsonRes) {
     board = jsonRes['board'];
@@ -30,4 +37,15 @@ class Board {
     isArchlived = jsonRes['is_archived'];
   }
 
+}
+
+class Boards {
+  List<Board> list;
+  // Boards.fromParams({this.list}) : super.fromParms();
+  Boards.fromJson(JsonRes) {
+    list = [];
+    for (var listItem in JsonRes) {
+      list.add(new Board.fromJson(listItem));
+    }
+  }
 }
