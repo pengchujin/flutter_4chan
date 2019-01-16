@@ -12,7 +12,7 @@ class NetworkAPi  {
 
   static dynamic _get(String url)  async {
     String response = await _read(url);
-    print('$url => \n $response');
+    // print('$url => \n $response');
     return json.decode(response.replaceAll('\r\n', '').replaceAll('\n', ''));
   }
 
@@ -22,7 +22,7 @@ class NetworkAPi  {
   }
 }
 
-void main(List<String> args) {
-  var data = NetworkAPi.getBroadsInfo();
-  print(data);
-}
+// void main(List<String> args) {
+//   var data = NetworkAPi.getBroadsInfo();
+//   print(data.toString());
+// }

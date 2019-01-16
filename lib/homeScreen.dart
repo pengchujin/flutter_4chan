@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:four_chan/placeholder.dart';
+import 'package:four_chan/ui/board/board.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(Colors.white),
-    PlaceholderWidget(Colors.green),
+    BroadHomePageView(),
     PlaceholderWidget(Colors.greenAccent),
   ];
   @override

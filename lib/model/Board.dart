@@ -1,7 +1,6 @@
 import 'dart:convert' show json;
 
 class Board {
-  
   String board;
   String title;
   num wsBoard;
