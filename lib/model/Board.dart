@@ -12,12 +12,6 @@ class Board {
   num maxWebmDuration;
   num bumpLimit;
   num imageLimit;
-  // double maxFilesize;
-  // double maxWebmFilesize;
-  // double maxCommentChars;
-  // double maxWebmDuration;
-  // double bumpLimit;
-  // double imageLimit;
   String metaDescription;
   num isArchlived;
 

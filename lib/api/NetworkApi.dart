@@ -20,6 +20,7 @@ class NetworkAPi  {
     var rawData = await _get(httpConstants.API_BOARDS);
     return Boards.fromJson(rawData['boards']);
   }
+  
 }
 
 // void main(List<String> args) {
