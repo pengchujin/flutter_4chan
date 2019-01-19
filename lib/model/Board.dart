@@ -35,9 +35,9 @@ class Board {
 class Boards {
   List<Board> list;
   // Boards.fromParams({this.list}) : super.fromParms();
-  Boards.fromJson(JsonRes) {
+  Boards.fromJson(jsonRes) {
     list = [];
-    for (var listItem in JsonRes) {
+    for (var listItem in jsonRes) {
       list.add(new Board.fromJson(listItem));
     }
   }

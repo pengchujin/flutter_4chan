@@ -7,8 +7,13 @@ class PlaceholderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: new Text(color.toString()),
+      ),
+      body: Container(
       color: color,
+      ),
     );
   }
 }
