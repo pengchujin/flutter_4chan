@@ -4,20 +4,21 @@ import 'package:four_chan/api/NetworkApi.dart';
 import 'package:four_chan/ui/widget/topic.dart';
 
 class TopicHomePageView extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => new TopicHomePageViewState();
+   final String thread;
+  TopicHomePageView(this.thread);
+  State<StatefulWidget> createState() => new TopicHomePageViewState(thread);
 }
 class TopicHomePageViewState<View extends StatefulWidget> extends State<View>
   with AutomaticKeepAliveClientMixin {
-    String site = 'r9k';
-    int page = 0;
+    final String site;
+    TopicHomePageViewState(this.site);
 
     Future<Threads> data;
     @override
     bool get wantKeepAlive => true;
 
     Future<Threads> onRefresh(){
-      return NetworkAPi.getThreads(site, 1);
+      return NetworkAPi.getThreads(site);
     }
     
     Future<Null> _onRefresh(){

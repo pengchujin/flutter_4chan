@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:four_chan/model/Board.dart';
+import 'package:four_chan/ui/hot/pop.dart';
 
 class BoardItemView extends StatelessWidget {
   final Board board;
@@ -8,8 +9,10 @@ class BoardItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        // add 
-        print(board);
+       Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TopicHomePageView(board.board)),
+            );
       },
       child: new Card(
         color: Colors.white,

@@ -28,9 +28,8 @@ class TopicItem extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: new DecorationImage(
                             fit: BoxFit.fill,
-                            image: new NetworkImage('https://robohash.org/' +
-                                topic.no.toString() +
-                                '?set=set4'),
+                            image: new NetworkImage('https://api.adorable.io/avatars/100/' +
+                                topic.no.toString()),
                           ),
                         ),
                       )),

@@ -22,10 +22,15 @@ class NetworkAPi  {
     return Boards.fromJson(rawData['boards']);
   }
 
-  static Future<Threads> getThreads(String broad, num page) async {
-    var rawData =  await _get(httpConstants.HOST + broad + '/catalog.json');
+  static Future<Threads> getThreads(String broad) async {
+    var rawDatas =  await _get(httpConstants.HOST + broad + '/catalog.json');
+    var threads = [];
+    rawDatas.forEach((data) => data['threads'].forEach((thread) => threads.add(thread)));
+    // var threads = rawDatas.map((rawData) => rawData['threads'].map((data) => data).toList());
+    // var response = threads.map((thread) => thread).toList();
+    // print(threads);
     // print(json.decode(rawData[page])['threads']);
-    return Threads.fromJson(rawData[page]['threads']);
+    return Threads.fromJson(threads);
   }
   
 }
