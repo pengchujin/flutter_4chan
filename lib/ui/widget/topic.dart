@@ -13,6 +13,7 @@ class TopicItem extends StatelessWidget {
     return new GestureDetector(
       onTap: () {},
       child: Column(
+  
         children: <Widget>[
           Padding(
               padding: const EdgeInsets.all(4.0),
@@ -20,10 +21,10 @@ class TopicItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: new Container(
-                        width: 30.0,
-                        height: 30.0,
+                        width: 40.0,
+                        height: 40.0,
                         decoration: new BoxDecoration(
                           shape: BoxShape.circle,
                           image: new DecorationImage(
@@ -38,7 +39,7 @@ class TopicItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -53,12 +54,12 @@ class TopicItem extends StatelessWidget {
                                               fontSize: 18.0,
                                               color: Colors.black)),
                                       TextSpan(
-                                          text: " No." + topic.no.toString(),
+                                          text: "   No." + topic.no.toString(),
                                           style: TextStyle(
                                               fontSize: 16.0,
                                               color: Colors.grey)),
                                       TextSpan(
-                                          text: "·" +
+                                          text: "  ·  " +
                                               TimeBase.getStandardDate(
                                                   topic.time),
                                           style: TextStyle(
@@ -68,12 +69,12 @@ class TopicItem extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                                flex: 5,
+                                flex: 8,
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(right: 4.0),
-                                  // child: Icon(Icons.expand_more, color: Colors.grey,),
+                                  padding: const EdgeInsets.only(),
+                                  child: Icon(Icons.expand_more, color: Colors.green,),
                                 ),
                                 flex: 1,
                               ),
@@ -93,16 +94,48 @@ class TopicItem extends StatelessWidget {
                                   })),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5.0),
+                          padding: const EdgeInsets.only(right:18.0, left: 18.0),
                           child: new Container(
                             child: Pic(topic, thread),
                           ),
                         ),
+                        Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(getFlag(topic.country)),
+                      Container(
+                        child: Row(
+                            children: <Widget>[
+                              Icon(Icons.comment, color: Colors.grey,),
+                              Padding(
+                                padding: EdgeInsets.only(left: 8),
+                                child: Text(topic.replies.toString(), style: TextStyle(color: Colors.green),),
+                              )
+                            ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                            children: <Widget>[
+                              Icon(Icons.photo, color: Colors.grey,),
+                              Padding(
+                                padding: EdgeInsets.only(left: 8),
+                                child: Text(topic.images.toString(), style: TextStyle(color: Colors.green),),
+                              )
+                            ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
                       ],
                     ),
                   )
                 ],
-              ))
+              )),
+              Divider(),
         ],
       ),
     );
@@ -123,6 +156,8 @@ class Pic extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       );
-    } else {}
+    } else {
+      
+    }
   }
 }

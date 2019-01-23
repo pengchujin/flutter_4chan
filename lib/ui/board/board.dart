@@ -37,13 +37,18 @@ class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
         future: data,
         builder: (context, result) {
           if(result.hasData) {
-            return new RefreshIndicator(
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Boards'),
+              ),
+              body:  new RefreshIndicator(
               child: new ListView(
                 children: result.data.list.map((Board board){
                   return new BoardItemView(board);
                 }).toList(),
               ),
               onRefresh: _onRefresh,
+            ),
             );
           } else if (result.hasError) {
           return new Center(

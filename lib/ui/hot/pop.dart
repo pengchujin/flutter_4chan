@@ -48,7 +48,6 @@ class TopicHomePageViewState<View extends StatefulWidget> extends State<View>
             return new RefreshIndicator(
               child: new ListView(
                 children: result.data.list.map((Thread thread){
-                  print(thread.toString());
                   return new TopicItem(thread, site);
                 }).toList(),
               ),

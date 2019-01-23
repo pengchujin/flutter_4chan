@@ -19,6 +19,7 @@ class Thread {
   String id;
   String country;
   num bumplimit;
+  num images;
   num imagelimit;
   String semanticUrl;
   String countryName;
@@ -28,6 +29,7 @@ class Thread {
   Replys lastReplies;
 
   Thread.fromJson(jsonRes) {
+    print(jsonRes['country']);
     no = jsonRes['no'];
     name = jsonRes['name'];
     sub = jsonRes['sub'];
@@ -44,6 +46,7 @@ class Thread {
     fsize = jsonRes['fsize'];
     resto = jsonRes['resto'];
     id = jsonRes['id'];
+    images = jsonRes['images'];
     country = jsonRes['country'];
     bumplimit = jsonRes['bumplimit'];
     imagelimit  = jsonRes['imagelimit'];
