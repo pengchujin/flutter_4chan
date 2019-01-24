@@ -25,8 +25,9 @@ class BoardItemView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 new Container(
-                  child: new Text(
-                    board.title
+                  alignment: Alignment(-1.0, -1.0),
+                  child: new Text(                    
+                    board.board + ' / ' + board.title
                   ),
                 )
               ],

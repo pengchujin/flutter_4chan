@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:four_chan/model/Board.dart';
 import 'package:four_chan/api/NetworkApi.dart';
 import 'package:four_chan/ui/widget/boardItem.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class BroadHomePageView extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
               appBar: AppBar(
                 title: Text('Boards'),
               ),
-              body:  new RefreshIndicator(
+              body:  new LiquidPullToRefresh(
               child: new ListView(
                 children: result.data.list.map((Board board){
                   return new BoardItemView(board);

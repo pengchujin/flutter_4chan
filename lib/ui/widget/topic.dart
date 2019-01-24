@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:four_chan/model/Thread.dart';
 import 'package:four_chan/util/TimeBase.dart';
 import 'package:flutter_html_view/flutter_html_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:math';
+
 
 class TopicItem extends StatelessWidget {
   final Thread topic;
@@ -29,6 +32,8 @@ class TopicItem extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: new DecorationImage(
                             fit: BoxFit.fill,
+                            // 'https://api.adorable.io/avatars/100/' +
+                            //     topic.no.toString()
                             image: new NetworkImage('https://api.adorable.io/avatars/100/' +
                                 topic.no.toString()),
                           ),
@@ -147,13 +152,32 @@ class Pic extends StatelessWidget {
   final String thread;
   Pic(this.topic, this.thread);
   @override
+
+ 
+
   Widget build(BuildContext context) {
+     Widget _sizedContainer(Widget child ) {
+      return new SizedBox(
+        width: max(280.0, topic.w.toDouble()),
+        height: min(280.0, topic.h.toDouble()),
+        child: new Center(
+          child: child,
+        ),
+      );
+    }
     if (topic.filename != null) {
       return new GestureDetector(
         onTap: () {},
-        child: Image.network(
-         'https://i.4cdn.org/' + thread + '/' + topic.tim.toString() + topic.ext,
-        fit: BoxFit.cover,
+        child: _sizedContainer(
+           new CachedNetworkImage(
+                imageUrl: 'https://i.4cdn.org/' + thread + '/' + topic.tim.toString() + topic.ext,
+                placeholder: new CircularProgressIndicator(),
+                errorWidget: new Icon(Icons.error),
+                fadeOutDuration: new Duration(seconds: 1),
+                fadeInDuration: new Duration(seconds: 1),
+              ),
+
+        //  'https://i.4cdn.org/' + thread + '/' + topic.tim.toString() + topic.ext,
       ),
       );
     } else {

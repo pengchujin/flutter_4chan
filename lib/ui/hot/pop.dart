@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:four_chan/model/Thread.dart';
 import 'package:four_chan/api/NetworkApi.dart';
 import 'package:four_chan/ui/widget/topic.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class TopicHomePageView extends StatefulWidget {
    final String thread;
@@ -45,7 +46,7 @@ class TopicHomePageViewState<View extends StatefulWidget> extends State<View>
         future: data,
         builder: (context, result) {
           if(result.hasData) {
-            return new RefreshIndicator(
+            return new LiquidPullToRefresh(
               child: new ListView(
                 children: result.data.list.map((Thread thread){
                   return new TopicItem(thread, site);
