@@ -4,6 +4,7 @@ import 'package:four_chan/api/NetworkApi.dart';
 import 'package:four_chan/ui/widget/boardItem.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
+
 class BroadHomePageView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new BroadHomePageViewState();
@@ -11,7 +12,7 @@ class BroadHomePageView extends StatefulWidget {
 
 class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
   with AutomaticKeepAliveClientMixin {
-     Future<Boards> data;
+    Future<Boards> data;
     @override
     bool get wantKeepAlive => true;
 
@@ -22,7 +23,7 @@ class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
     Future<Null> _onRefresh(){
     return new Future((){
       setState(() {
-        data = onRefresh();
+        data =  onRefresh();
       });
     });
     }
@@ -34,22 +35,21 @@ class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
     }
 
     Widget build(BuildContext context) {
-      return new FutureBuilder<Boards>(
-        future: data,
-        builder: (context, result) {
-          if(result.hasData) {
-            return Scaffold(
+      return new Scaffold(
               appBar: AppBar(
-                title: Text('Boards'),
+                title: Text('Boards'), 
               ),
-              body:  new LiquidPullToRefresh(
+              body:   new FutureBuilder<Boards>(
+              future: data,
+              builder: (context, result) {
+             if(result.hasData) {     
+              return  new LiquidPullToRefresh(
               child: new ListView(
                 children: result.data.list.map((Board board){
-                  return new BoardItemView(board);
+                    return new BoardItemView(board);
                 }).toList(),
               ),
-              onRefresh: _onRefresh,
-            ),
+              onRefresh:  _onRefresh,
             );
           } else if (result.hasError) {
           return new Center(
@@ -60,7 +60,8 @@ class BroadHomePageViewState<View extends StatefulWidget> extends State<View>
           child: new CircularProgressIndicator(),
         );
         },
-      );
+      ),
+      ); 
     }
 
   }

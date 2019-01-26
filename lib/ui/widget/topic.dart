@@ -181,7 +181,7 @@ class Pic extends StatelessWidget {
       ),
       );
     } else {
-      
+      return Text("");
     }
   }
 }

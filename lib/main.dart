@@ -37,7 +37,7 @@ class _SplashScreen extends State<SplashScreen> {
       body: new Center(
         child: new Container(
            padding: const EdgeInsets.all(100.0),
-           child: new Image.asset('assets/splash.png',),
+           child: new Image.asset('assets/splash.png'),
         ),
         
       ),

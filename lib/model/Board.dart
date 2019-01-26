@@ -1,4 +1,3 @@
-import 'dart:convert' show json;
 
 class Board {
   String board;
@@ -38,7 +37,13 @@ class Boards {
   Boards.fromJson(jsonRes) {
     list = [];
     for (var listItem in jsonRes) {
-      list.add(new Board.fromJson(listItem));
+        list.add(new Board.fromJson(listItem));
+    }
+  }
+   getBoards(jsonRes){
+    list = [];
+    for (var listItem in jsonRes) {
+        list.add(new Board.fromJson(listItem));
     }
   }
 }
