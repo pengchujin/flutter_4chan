@@ -186,7 +186,7 @@ class Pic extends StatelessWidget {
               context, 
               MaterialPageRoute(
                 builder: (context) => FullScreenWrapper('https://i.4cdn.org/' +
-                thread +
+                topic.board +
                 '/' +
                 topic.tim.toString() +
                 topic.ext)
@@ -196,7 +196,7 @@ class Pic extends StatelessWidget {
         child: _sizedContainer(
           new CachedNetworkImage(
             imageUrl: 'https://i.4cdn.org/' +
-                thread +
+                topic.board +
                 '/' +
                 topic.tim.toString() +
                 topic.ext,

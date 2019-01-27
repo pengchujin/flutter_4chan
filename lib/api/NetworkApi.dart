@@ -47,14 +47,40 @@ class NetworkAPi  {
   }
 
   static Future<Threads> getThreads(String broad) async {
-    var rawDatas =  await _get(httpConstants.HOST + broad + '/catalog.json');
-    var threads = [];
-    rawDatas.forEach((data) => data['threads'].forEach((thread) => threads.add(thread)));
+    
+    
     // var threads = rawDatas.map((rawData) => rawData['threads'].map((data) => data).toList());
     // var response = threads.map((thread) => thread).toList();
     // print(threads);
     // print(json.decode(rawData[page])['threads']);
-    return Threads.fromJson(threads);
+    
+    if(broad == 'pop') {
+      var threads = [];
+    // print(rawData.toString());
+       var t = ['pol', 'r9k', 'jp', 'v'];
+       for (var item in t) {
+        var rawDatas =  await _get(httpConstants.HOST + item + '/catalog.json');
+        rawDatas.forEach((data) => data['threads'].forEach(
+          (thread) {
+            if(thread['replies'] > 50) {
+              thread['board'] = item;
+              threads.add(thread);
+            }
+          }
+          //  => thread['replies'] > 50 ?  threads.add(thread)   : thread['1'] 
+          ));
+      }
+  
+      return Threads.fromJson(threads);
+    } else{
+      var rawDatas =  await _get(httpConstants.HOST + broad + '/catalog.json');
+      var threads = [];
+      rawDatas.forEach((data) => data['threads'].forEach((thread) { 
+        thread['board'] = broad;
+        threads.add(thread);
+      }));
+      return Threads.fromJson(threads);
+    }
   }
   
 }

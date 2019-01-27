@@ -23,6 +23,7 @@ class Thread {
   num imagelimit;
   String semanticUrl;
   String countryName;
+  String board;
   //[todo] m_image what's this;
   num replies;
   num lastModified;
@@ -47,6 +48,7 @@ class Thread {
     resto = jsonRes['resto'];
     id = jsonRes['id'];
     images = jsonRes['images'];
+    board = jsonRes['board'];
     country = jsonRes['country'];
     bumplimit = jsonRes['bumplimit'];
     imagelimit  = jsonRes['imagelimit'];
@@ -79,6 +81,7 @@ class Reply {
   num fsize;
   num resto;
   String id;
+  String board;
   String country;
   String countryName;
   
@@ -98,6 +101,7 @@ class Reply {
     fsize = jsonRes['fsize'];
     resto = jsonRes['resto'];
     id = jsonRes['id'];
+    board = jsonRes['board'];
     country = jsonRes['country'];
     countryName = jsonRes['country_name'];
   }
