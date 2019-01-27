@@ -39,7 +39,7 @@ class TopicHomePageViewState<View extends StatefulWidget> extends State<View>
     Widget build(BuildContext context) {
       return new Scaffold(
         appBar: AppBar(
-          title: Text("Pop"),
+          title: Text(site),
         ),
         body: new FutureBuilder<Threads>(
         future: data,

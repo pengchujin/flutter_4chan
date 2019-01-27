@@ -35,7 +35,6 @@ class NetworkAPi  {
     // print(rawData.toString());
     var t = rawData['boards'];
     var res = [];
-    print(t[2]);
     for (var item in t) {
       var f = await _favorite(item['title']); 
      if( f == 1) {
