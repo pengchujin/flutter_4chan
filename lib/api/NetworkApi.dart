@@ -46,7 +46,7 @@ class NetworkAPi  {
     return Boards.fromJson(res);
   }
 
-  static Future<Threads> getThreads(String broad) async {
+  static Future<Threads> getThreads(String board) async {
     
     
     // var threads = rawDatas.map((rawData) => rawData['threads'].map((data) => data).toList());
@@ -54,7 +54,7 @@ class NetworkAPi  {
     // print(threads);
     // print(json.decode(rawData[page])['threads']);
     
-    if(broad == 'pop') {
+    if(board == 'pop') {
       var threads = [];
     // print(rawData.toString());
        var t = ['pol', 'r9k', 'jp', 'v'];
@@ -73,10 +73,10 @@ class NetworkAPi  {
   
       return Threads.fromJson(threads);
     } else{
-      var rawDatas =  await _get(httpConstants.HOST + broad + '/catalog.json');
+      var rawDatas =  await _get(httpConstants.HOST + board + '/catalog.json');
       var threads = [];
       rawDatas.forEach((data) => data['threads'].forEach((thread) { 
-        thread['board'] = broad;
+        thread['board'] = board;
         threads.add(thread);
       }));
       return Threads.fromJson(threads);
