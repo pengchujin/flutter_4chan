@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:four_chan/model/Thread.dart';
 import 'package:four_chan/util/TimeBase.dart';
-import 'package:four_chan/ui/detail/detail.dart';
 import 'package:flutter_html_view/flutter_html_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'dart:math';
 import 'package:photo_view/photo_view.dart';
 
-class TopicItem extends StatelessWidget {
+class Comment extends StatelessWidget {
   final Thread topic;
 
   final String thread;
-  TopicItem(this.topic, this.thread);
+  Comment(this.topic, this.thread);
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => DetailPageView(topic)),
-        );
+       
       },
       child: Column(
         children: <Widget>[
@@ -115,49 +110,7 @@ class TopicItem extends StatelessWidget {
                             child: Pic(topic, thread),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Text(getFlag(topic.country)),
-                              Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.comment,
-                                      color: Colors.grey,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 8),
-                                      child: Text(
-                                        topic.replies.toString(),
-                                        style: TextStyle(color: Colors.green),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.photo,
-                                      color: Colors.grey,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 8),
-                                      child: Text(
-                                        topic.images.toString(),
-                                        style: TextStyle(color: Colors.green),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
+                      
                       ],
                     ),
                   )
@@ -217,7 +170,9 @@ class Pic extends StatelessWidget {
         ),
       );
     } else {
-      return Text("");
+      return Container(
+        
+      );
     }
   }
 }

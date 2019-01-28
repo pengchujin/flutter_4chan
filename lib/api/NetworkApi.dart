@@ -46,6 +46,19 @@ class NetworkAPi  {
     return Boards.fromJson(res);
   }
 
+  static Future<Threads> getRelys(no, board) async {
+    print(httpConstants.HOST + board + '/thread/'  +  no + '.json');
+    var rawDatas =  await _get(httpConstants.HOST + board + '/thread/'  +  no + '.json');
+      var threads = [];
+     rawDatas['posts'].forEach((thread) { 
+        thread['board'] = board;
+        threads.add(thread);
+      });
+      return Threads.fromJson(threads);
+  }
+
+
+
   static Future<Threads> getThreads(String board) async {
     
     
