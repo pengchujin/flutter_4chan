@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:four_chan/placeholder.dart';
 import 'package:four_chan/ui/board/board.dart';
 import 'package:four_chan/ui/hot/pop.dart';
+import 'package:four_chan/ui/me/me.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _children = [
     TopicHomePageView('pop'),
     BroadHomePageView(),
-    PlaceholderWidget(Colors.greenAccent),
+    MeHomePage(),
   ];
   @override
   Widget build(BuildContext context) {

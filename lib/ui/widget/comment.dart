@@ -39,6 +39,7 @@ class Comment extends StatelessWidget {
                                 'https://api.adorable.io/avatars/100/' +
                                     topic.no.toString()),
                           ),
+                        // Text(getFlag(topic.country))
                         ),
                       )),
                   Expanded(
@@ -54,6 +55,9 @@ class Comment extends StatelessWidget {
                                 child: Container(
                                   child: RichText(
                                     text: TextSpan(children: [
+                                     topic.replies == null ? TextSpan(
+                                        text: getFlag(topic.country) + '   '
+                                      ) : 
                                       TextSpan(
                                           text: topic.name,
                                           style: TextStyle(
@@ -103,19 +107,63 @@ class Comment extends StatelessWidget {
                                     print("launch $url failed");
                                   })),
                         ),
-                        Padding(
+                         Padding(
                           padding:
                               const EdgeInsets.only(right: 18.0, left: 18.0),
                           child: new Container(
                             child: Pic(topic, thread),
                           ),
                         ),
+                       topic.replies != null ?   Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Text(getFlag(topic.country)),
+                              Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.comment,
+                                      color: Colors.grey,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 8),
+                                      child: Text(
+                                        topic.replies.toString(),
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.photo,
+                                      color: Colors.grey,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 8),
+                                      child: Text(
+                                        topic.images.toString(),
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ) : Container()
                       
                       ],
                     ),
                   )
                 ],
               )),
+              
           Divider(),
         ],
       ),
